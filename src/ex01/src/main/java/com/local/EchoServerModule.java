@@ -7,6 +7,7 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import lombok.NonNull;
 
+import javax.inject.Named;
 import java.net.InetSocketAddress;
 
 @Module
@@ -17,13 +18,19 @@ class EchoServerModule {
     }
 
     @Provides
-    int provideServerPort() {
+    int provideProdPort() {
         return 9999;
     }
 
     @Provides
+    @Named("devPort")
+    int provideDevPort() {
+        return 8888;
+    }
+
+    @Provides
     ServerBootstrap provideEchoServer(@NonNull NioEventLoopGroup workerGroup,
-                                      int port) {
+                                      @Named("devPort") int port) {
         ServerBootstrap echoServer = new ServerBootstrap();
         echoServer.group(new NioEventLoopGroup(), workerGroup)
                 .channel(NioServerSocketChannel.class)
