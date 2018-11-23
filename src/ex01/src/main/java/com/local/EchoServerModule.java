@@ -3,12 +3,32 @@ package com.local;
 import dagger.Module;
 import dagger.Provides;
 import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.nio.NioServerSocketChannel;
+import lombok.NonNull;
+
+import java.net.InetSocketAddress;
 
 @Module
-public class EchoServerModule {
+class EchoServerModule {
     @Provides
-    public ServerBootstrap provideEchoServer() {
+    NioEventLoopGroup provideWorkerGroup() {
+        return new NioEventLoopGroup();
+    }
+
+    @Provides
+    int provideServerPort() {
+        return 9999;
+    }
+
+    @Provides
+    ServerBootstrap provideEchoServer(@NonNull NioEventLoopGroup workerGroup,
+                                      int port) {
         ServerBootstrap echoServer = new ServerBootstrap();
+        echoServer.group(new NioEventLoopGroup(), workerGroup)
+                .channel(NioServerSocketChannel.class)
+                .localAddress(new InetSocketAddress(port))
+        .childHandler(new PathChannelInitializer());
         return echoServer;
     }
 }
