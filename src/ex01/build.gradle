@@ -8,6 +8,8 @@ version '1.0'
 def junitVersion = '4.12'
 def log4jVersion = '2.11.1'
 def lombokVersion = '1.18.4'
+def nettyVersion = '4.1.31.Final'
+def daggerVersion = '2.19'
 
 sourceCompatibility = 1.8
 
@@ -27,6 +29,13 @@ dependencies {
     // lombok
     compile "org.projectlombok:lombok:$lombokVersion"
     annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+
+    // netty
+    compile "io.netty:netty-all:$nettyVersion"
+
+    // dagger
+    compile "com.google.dagger:dagger:$daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
 }
 
 task fatJar(type: Jar) {
