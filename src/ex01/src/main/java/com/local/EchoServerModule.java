@@ -28,7 +28,7 @@ class EchoServerModule {
         echoServer.group(new NioEventLoopGroup(), workerGroup)
                 .channel(NioServerSocketChannel.class)
                 .localAddress(new InetSocketAddress(port))
-        .childHandler(new PathChannelInitializer());
+        .childHandler(new EchoChannelInitializer());
         return echoServer;
     }
 }
