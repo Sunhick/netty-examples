@@ -1,0 +1,51 @@
+plugins {
+    id 'java'
+}
+
+group 'ex01'
+version '1.0'
+
+def junitVersion = '4.12'
+def log4jVersion = '2.11.1'
+def lombokVersion = '1.18.4'
+
+sourceCompatibility = 1.8
+
+jar.manifest.attributes 'Main-Class': 'com.local.Starter'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile "junit:junit:$junitVersion"
+
+    // log4j
+    compile "org.apache.logging.log4j:log4j-api:$log4jVersion"
+    compile "org.apache.logging.log4j:log4j-core:$log4jVersion"
+
+    // lombok
+    compile "org.projectlombok:lombok:$lombokVersion"
+    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+}
+
+task fatJar(type: Jar) {
+    group 'Standalone'
+    description 'Creates a standalone jar file'
+
+    manifest.attributes 'Main-Class': 'com.local.Starter'
+    baseName = project.name + '-all'
+    from {
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+    with jar
+}
+
+task run(type:JavaExec) {
+    group 'Standalone'
+    description 'Runs the java jar application (not standalone)'
+    main = 'com.local.Starter'
+    classpath = sourceSets.main.runtimeClasspath
+}
