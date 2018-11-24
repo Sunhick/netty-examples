@@ -18,7 +18,6 @@ public class EchoHandler extends ChannelInboundHandlerAdapter {
        response.headers().add(HttpHeaderNames.CONTENT_TYPE, "text/plain");
        response.headers().add(HttpHeaderNames.CONTENT_LENGTH, echo.length());
        ctx.write(response);
-       // ctx.write(msg);
     }
 
     @Override
