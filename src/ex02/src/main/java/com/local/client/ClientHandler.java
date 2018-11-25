@@ -11,7 +11,7 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         log.debug("Client handler channel read: ");
         EchoDateTimeProto.EchoDateTime ts = (EchoDateTimeProto.EchoDateTime) msg;
-        log.debug("Client handler channel read: " + msg);
+        log.info("Client handler channel read: " + msg);
         ctx.writeAndFlush(ts);
     }
 
