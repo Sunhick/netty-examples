@@ -28,6 +28,7 @@ def lombokVersion = '1.18.4'
 def nettyVersion = '4.1.31.Final'
 def daggerVersion = '2.19'
 def protobufVersion = '3.6.1'
+def aclVersion = '3.0'
 
 sourceCompatibility = 1.8
 
@@ -66,6 +67,9 @@ dependencies {
 
     // protobuf library
     compile "com.google.protobuf:protobuf-java:$protobufVersion"
+
+    // Apache commons lang
+    compile "org.apache.commons:commons-lang3:$aclVersion"
 }
 
 task fatJar(type: Jar) {

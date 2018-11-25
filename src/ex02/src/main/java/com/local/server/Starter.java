@@ -35,6 +35,8 @@ public class Starter {
                 pipeline.addLast(new EchoDateTimeEncoder());
                 pipeline.addLast(new EchoDateTimeDecoder());
                 pipeline.addLast(group,"serverHandler", new ServerHandler());
+
+                log.warn("List of server pipelines: " + ch.pipeline().names());
             }
         });
 

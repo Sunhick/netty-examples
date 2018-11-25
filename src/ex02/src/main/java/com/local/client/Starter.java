@@ -24,6 +24,8 @@ public class Starter {
                         new EchoDateTimeEncoder(),
                         new EchoDateTimeDecoder(),
                         new ClientHandler());
+
+                log.warn("List of client pipelines: " + ch.pipeline().names());
             }
         });
 

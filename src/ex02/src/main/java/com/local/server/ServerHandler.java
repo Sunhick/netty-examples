@@ -6,6 +6,7 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.handler.timeout.IdleState;
 import io.netty.handler.timeout.IdleStateEvent;
 import lombok.extern.log4j.Log4j2;
+import org.apache.commons.lang3.RandomStringUtils;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -27,8 +28,9 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         if (evt instanceof IdleStateEvent) {
             IdleStateEvent event = (IdleStateEvent) evt;
             if (event.state() == IdleState.ALL_IDLE) {
-                EchoDateTimeProto.EchoDateTime ts = EchoDateTimeProto.EchoDateTime.newBuilder().
-                        setTimestamp(dateFormat.format(new Date()))
+                EchoDateTimeProto.EchoDateTime ts = EchoDateTimeProto.EchoDateTime.newBuilder()
+                        .setTimestamp(dateFormat.format(new Date()))
+                        .setSecret(RandomStringUtils.randomAlphanumeric(10))
                         .build();
                 ctx.writeAndFlush(ts);
             }

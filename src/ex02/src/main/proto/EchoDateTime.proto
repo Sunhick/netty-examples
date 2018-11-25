@@ -6,5 +6,6 @@ option java_package = "com.local";
 option java_outer_classname = "EchoDateTimeProto";
 
 message EchoDateTime {
-    required string timestamp=1;
+    required string timestamp = 1;
+    required string secret = 2;
 }
