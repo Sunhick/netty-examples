@@ -11,10 +11,15 @@ public class EchoServerApp {
 
         var echoServerComponent = DaggerEchoServerComponent.create();
         EchoServer server = echoServerComponent.createServer();
-        server.run();
+        server.start();
 
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             log.warn("Shutting down the echo server");
+            try {
+                server.stop();
+            } catch (InterruptedException e) {
+                log.error("Error in stopping server", e);
+            }
         }));
     }
 }
