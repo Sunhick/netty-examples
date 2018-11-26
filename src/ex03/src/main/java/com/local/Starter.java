@@ -4,7 +4,6 @@ import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 public class Starter {
-
     public static void main(String[] args) {
         log.debug("Welcome to netty ex03 example.");
         log.info("Welcome to netty ex03 example.");
