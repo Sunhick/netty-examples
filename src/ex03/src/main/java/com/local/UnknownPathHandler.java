@@ -11,7 +11,7 @@ import lombok.extern.log4j.Log4j2;
 public class UnknownPathHandler extends SimpleChannelInboundHandler<Object> {
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
-        log.info("In ping handler");
+        log.info("In unknown handler");
         DefaultHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.BAD_REQUEST);
         ctx.writeAndFlush(response);
     }
