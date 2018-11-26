@@ -20,7 +20,7 @@ public class EchoServer {
     }
 
     public void start() throws InterruptedException {
-        log.trace("starting the server");
+        log.info("starting the server. Listening at: " + address);
         future = serverBootstrap.bind(address).sync();
     }
 

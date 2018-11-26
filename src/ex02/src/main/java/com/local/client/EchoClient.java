@@ -18,7 +18,7 @@ public class EchoClient {
     }
 
     public void run() {
-        log.debug("Client connecting to the server");
+        log.info("Client connecting to the server: " + address);
         client.connect(address);
     }
 }

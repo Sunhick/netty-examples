@@ -1,5 +1,6 @@
 package com.local.server.dagger;
 
+import com.local.codec.DiscoveryModule;
 import com.local.server.EchoChannelInitializer;
 import dagger.Module;
 import dagger.Provides;
@@ -10,15 +11,8 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.util.concurrent.DefaultEventExecutorGroup;
 import io.netty.util.concurrent.EventExecutorGroup;
 
-import java.net.InetSocketAddress;
-
-@Module
+@Module(includes = {DiscoveryModule.class})
 public class EchoServerModule {
-    @Provides
-    public InetSocketAddress provideServerIp() {
-        return new InetSocketAddress("localhost", 9999);
-    }
-
     @Provides
     public EventExecutorGroup provideExecutorGroup(int threadsInPool) {
         return new DefaultEventExecutorGroup(threadsInPool);

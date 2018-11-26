@@ -1,21 +1,15 @@
 package com.local.client.dagger;
 
 import com.local.client.EchoClientChannelInitializer;
+import com.local.codec.DiscoveryModule;
 import dagger.Module;
 import dagger.Provides;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
 
-import java.net.InetSocketAddress;
-
-@Module
+@Module(includes = {DiscoveryModule.class})
 public class EchoClientModule {
-    @Provides
-    public InetSocketAddress provideServerAddress() {
-        return new InetSocketAddress("localhost", 9999);
-    }
-
     @Provides
     public EchoClientChannelInitializer provideClientChannel() {
         return new EchoClientChannelInitializer();
