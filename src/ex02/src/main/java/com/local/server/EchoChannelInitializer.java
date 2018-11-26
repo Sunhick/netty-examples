@@ -23,10 +23,13 @@ public class EchoChannelInitializer extends ChannelInitializer<SocketChannel> {
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
-        pipeline.addLast("idleStateHandler",new IdleStateHandler(0,0,5));
+        pipeline.addLast("idleStateHandler", new IdleStateHandler(0,0,5));
         pipeline.addLast(new EchoDateTimeEncoder());
         pipeline.addLast(new EchoDateTimeDecoder());
         pipeline.addLast(group,"serverHandler", new EchoServerHandler());
+
+        // Remove the echo channel initializer
+        pipeline.remove(this);
 
         log.warn("List of server pipelines: " + ch.pipeline().names());
     }

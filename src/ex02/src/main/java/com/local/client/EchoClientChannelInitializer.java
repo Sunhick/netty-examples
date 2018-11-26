@@ -13,8 +13,10 @@ public class EchoClientChannelInitializer extends ChannelInitializer<SocketChann
         ch.pipeline().addLast(
                 new EchoDateTimeEncoder(),
                 new EchoDateTimeDecoder(),
-                new ClientHandler());
+                new EchoClientHandler());
 
+        // remove echo channel client initializer.
+        ch.pipeline().remove(this);
         log.warn("List of client pipelines: " + ch.pipeline().names());
     }
 }

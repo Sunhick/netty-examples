@@ -13,7 +13,7 @@ import java.net.InetSocketAddress;
 public class EchoClientModule {
     @Provides
     public InetSocketAddress provideServerAddress() {
-        return new InetSocketAddress("localhost", 8888);
+        return new InetSocketAddress("localhost", 9999);
     }
 
     @Provides

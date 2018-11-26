@@ -16,7 +16,7 @@ import java.net.InetSocketAddress;
 public class EchoServerModule {
     @Provides
     public InetSocketAddress provideServerIp() {
-        return new InetSocketAddress("localhost", 8888);
+        return new InetSocketAddress("localhost", 9999);
     }
 
     @Provides

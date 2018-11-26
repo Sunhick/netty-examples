@@ -25,6 +25,6 @@ public class EchoServer {
     }
 
     public void stop() throws InterruptedException {
-        future.channel().closeFuture().sync();
+        // future.channel().closeFuture().sync();
     }
 }
