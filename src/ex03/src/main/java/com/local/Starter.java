@@ -1,25 +1,20 @@
 package com.local;
 
 import lombok.extern.log4j.Log4j2;
-import org.apache.logging.log4j.Level;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import org.local.Tester;
 
 @Log4j2
 public class Starter {
 
-    public static void main(String[] args) throws InterruptedException {
-        final List<Level> VALUES =
-                Collections.unmodifiableList(Arrays.asList(Level.values()));
-        final int SIZE = VALUES.size();
-        final Random RANDOM = new Random();
+    public static void main(String[] args) {
+        log.debug("Welcome to netty ex03 example.");
+        log.info("Welcome to netty ex03 example.");
+        log.warn("Welcome to netty ex03 example.");
+        log.error("Welcome to netty ex03 example.");
+        log.fatal("Welcome to netty ex03 example.");
+        log.trace("Welcome to netty ex03 example.");
 
-        while (true) {
-            log.log(VALUES.get(RANDOM.nextInt(SIZE)), "Hi there, quick brown fox jumped quickly over");
-            Thread.sleep(500);
-        }
+        Tester t = new Tester();
+        t.moreLog();
     }
 }

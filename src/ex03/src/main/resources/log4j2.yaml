@@ -1,16 +1,56 @@
 Configuration:
-  status: warn
+  status: all
+  name: ex03
+  properties:
+    property:
+      name: filename
+      value: ex03-log.txt
 
   Appenders:
     Console:
-      name: Console
+      name: consoleAppender
       target: SYSTEM_OUT
       PatternLayout:
         Pattern: "%highlight{%d{yyyy-MM-dd HH:mm:ss} %-5p %c - %m%n}{TRACE=Bright blue}"
 
+    File:
+      name: fileAppender
+      fileName: ${filename}
+      PatternLayout:
+        Pattern: "%d{yyyy-MM-dd HH:mm:ss} %-5p %c - %m%n"
+      Filters:
+        ThresholdFilter:
+          level: all
 
   Loggers:
+    logger:
+      -
+        name: org.local
+        level: all
+        additivity: true
+        AppenderRef:
+          ref: fileAppender
+      -
+        name: org.local
+        level: all
+        additivity: true
+        AppenderRef:
+          ref: consoleAppender
+      -
+        name: com.local
+        level: all
+        additivity: true
+        AppenderRef:
+          ref: fileAppender
+      -
+        name: com.local
+        level: all
+        additivity: true
+        AppenderRef:
+          ref: consoleAppender
+
     Root:
-      level: trace
+      level: all
       AppenderRef:
-        ref: Console
+        - ref: consoleAppender
+        - ref: fileAppender
