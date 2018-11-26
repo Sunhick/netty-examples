@@ -1,4 +1,4 @@
-package com.local.codec;
+package com.local.common.codec;
 
 import com.local.EchoDateTimeProto;
 import io.netty.buffer.ByteBuf;

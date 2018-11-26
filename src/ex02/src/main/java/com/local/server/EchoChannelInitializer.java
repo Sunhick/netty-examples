@@ -1,7 +1,7 @@
 package com.local.server;
 
-import com.local.codec.EchoDateTimeDecoder;
-import com.local.codec.EchoDateTimeEncoder;
+import com.local.common.codec.EchoDateTimeDecoder;
+import com.local.common.codec.EchoDateTimeEncoder;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;

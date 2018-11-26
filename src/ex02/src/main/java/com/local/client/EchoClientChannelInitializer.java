@@ -1,7 +1,7 @@
 package com.local.client;
 
-import com.local.codec.EchoDateTimeDecoder;
-import com.local.codec.EchoDateTimeEncoder;
+import com.local.common.codec.EchoDateTimeDecoder;
+import com.local.common.codec.EchoDateTimeEncoder;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
 import lombok.extern.log4j.Log4j2;

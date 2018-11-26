@@ -1,6 +1,6 @@
 package com.local.server.dagger;
 
-import com.local.codec.DiscoveryModule;
+import com.local.common.DiscoveryModule;
 import com.local.server.EchoChannelInitializer;
 import dagger.Module;
 import dagger.Provides;

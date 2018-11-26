@@ -1,7 +1,7 @@
 package com.local.client.dagger;
 
 import com.local.client.EchoClientChannelInitializer;
-import com.local.codec.DiscoveryModule;
+import com.local.common.DiscoveryModule;
 import dagger.Module;
 import dagger.Provides;
 import io.netty.bootstrap.Bootstrap;

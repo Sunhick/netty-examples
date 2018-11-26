@@ -1,4 +1,4 @@
-package com.local.codec;
+package com.local.common;
 
 import dagger.Module;
 import dagger.Provides;
@@ -9,6 +9,6 @@ import java.net.InetSocketAddress;
 public class DiscoveryModule {
     @Provides
     public InetSocketAddress provideServerAddress() {
-        return new InetSocketAddress("localhost", 11111);
+        return new InetSocketAddress("localhost", 7777);
     }
 }
