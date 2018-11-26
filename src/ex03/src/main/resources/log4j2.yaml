@@ -1,0 +1,16 @@
+Configuration:
+  status: warn
+
+  Appenders:
+    Console:
+      name: Console
+      target: SYSTEM_OUT
+      PatternLayout:
+        Pattern: "%highlight{%d{yyyy-MM-dd HH:mm:ss} %-5p %c - %m%n}{TRACE=Bright blue}"
+
+
+  Loggers:
+    Root:
+      level: trace
+      AppenderRef:
+        ref: Console
