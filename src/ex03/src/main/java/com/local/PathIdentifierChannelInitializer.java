@@ -27,6 +27,6 @@ public class PathIdentifierChannelInitializer extends ChannelInitializer<SocketC
         pipeline.addLast(new HttpServerCodec())
                 .addLast(new HttpObjectAggregator(MAX_SIZE))
                 .addLast(factory.newIdentifierHandler());
-        pipeline.remove(this);
+        // pipeline.remove(this); Not required. ChannelIntializer already does this for you.
     }
 }
