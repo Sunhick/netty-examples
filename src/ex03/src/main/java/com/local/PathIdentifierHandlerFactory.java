@@ -1,4 +1,4 @@
-package com.local.dagger;
+package com.local;
 
 import com.local.PathIdentifierHandler;
 

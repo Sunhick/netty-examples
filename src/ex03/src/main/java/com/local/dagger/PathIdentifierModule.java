@@ -3,6 +3,7 @@ package com.local.dagger;
 import com.local.PathHandlerInitializer;
 import com.local.PathIdentifierChannelInitializer;
 import com.local.PathIdentifierHandler;
+import com.local.PathIdentifierHandlerFactory;
 import dagger.Module;
 import dagger.Provides;
 import io.netty.bootstrap.ServerBootstrap;
