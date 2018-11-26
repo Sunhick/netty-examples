@@ -1,4 +1,4 @@
-package com.local.common;
+package dagger;
 
 import dagger.Module;
 import dagger.Provides;

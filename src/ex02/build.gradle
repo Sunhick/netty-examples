@@ -100,10 +100,24 @@ task clientJar(type: Jar) {
     with jar
 }
 
-
 task run(type:JavaExec) {
     group 'Standalone'
     description 'Runs the java jar application (not standalone)'
     main = 'com.local.Starter'
     classpath = sourceSets.main.runtimeClasspath
+}
+
+sourceSets {
+    main {
+        proto {
+            // In addition to the default 'src/main/proto'
+            srcDir 'src/main/java/com/local/common/proto'
+            srcDir 'src/main/java/com/local/common'
+            // In addition to the default '**/*.proto' (use with caution).
+            // Using an extension other than 'proto' is NOT recommended,
+            // because when proto files are published along with class files, we can
+            // only tell the type of a file from its extension.
+            include '**/*.protodevel'
+        }
+    }
 }
