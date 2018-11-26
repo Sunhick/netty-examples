@@ -9,7 +9,7 @@ public class Starter {
         FooComponent fooComponent = DaggerFooComponent.create();
 
         // Not possible to print the address of the object in java.
-        // Want we see is in-fact a complete identityHashCode / hashCode
+        // What we see is in-fact a complete identityHashCode / hashCode
         // of an object.
         for (int i = 0; i < 3; i++) {
 //            Creates all singletons per fooComponent here.
