@@ -1,8 +1,5 @@
 package dagger;
 
-import dagger.Module;
-import dagger.Provides;
-
 import java.net.InetSocketAddress;
 
 @Module
