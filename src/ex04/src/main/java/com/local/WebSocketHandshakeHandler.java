@@ -9,8 +9,8 @@ import lombok.extern.log4j.Log4j2;
 import lombok.var;
 
 @Log4j2
-public class WebSocketConnectionHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
-    public WebSocketConnectionHandler() {
+public class WebSocketHandshakeHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
+    public WebSocketHandshakeHandler() {
         super(false);
     }
 

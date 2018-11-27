@@ -32,7 +32,7 @@ public class HttpConnectionHandler extends SimpleChannelInboundHandler<FullHttpR
         }
 
         log.info("HTTP connection with upgrade to websocket parameters");
-        ctx.pipeline().replace(this, WebSocketConnectionHandler.class.getName(), new WebSocketConnectionHandler());
+        ctx.pipeline().replace(this, WebSocketHandshakeHandler.class.getName(), new WebSocketHandshakeHandler());
         ctx.fireChannelRead(request);
     }
 }
