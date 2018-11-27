@@ -17,7 +17,7 @@ public class WebSocketChannelInitializer extends ChannelInitializer<SocketChanne
         ChannelPipeline pipeline = ch.pipeline();
         pipeline.addLast(new HttpServerCodec())
                 .addLast(new HttpObjectAggregator(MAXSIZE))
-                .addLast(new WebSocketConnectionHandler());
+                .addLast(new HttpConnectionHandler());
 
     }
 }
