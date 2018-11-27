@@ -3,23 +3,17 @@ buildscript {
         maven {
             url "https://plugins.gradle.org/m2/"
         }
-
-        mavenCentral()
     }
     dependencies {
         classpath "net.ltgt.gradle:gradle-apt-plugin:0.4"
-        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.7'
     }
 }
 
-plugins {
-    id "net.ltgt.apt" version "0.4"
-    id "java"
-    id "idea"
-    id "com.google.protobuf" version "0.8.7"
-}
+apply plugin: "net.ltgt.apt"
+apply plugin: 'java'
+apply plugin: 'idea'
 
-group 'ex02'
+group 'ex01'
 version '1.0'
 
 def junitVersion = '4.12'
@@ -27,8 +21,6 @@ def log4jVersion = '2.11.1'
 def lombokVersion = '1.18.4'
 def nettyVersion = '4.1.31.Final'
 def daggerVersion = '2.19'
-def protobufVersion = '3.6.1'
-def aclVersion = '3.0'
 
 sourceCompatibility = 1.8
 
@@ -38,18 +30,10 @@ repositories {
     mavenCentral()
 }
 
-protobuf {
-    // Configure the protoc executable
-    protoc {
-        // Download from repositories
-        artifact = 'com.google.protobuf:protoc:3.0.0'
-    }
-}
-
 dependencies {
     testCompile "junit:junit:$junitVersion"
 
-    // log4j2
+    // log4j
     compile "org.apache.logging.log4j:log4j-api:$log4jVersion"
     compile "org.apache.logging.log4j:log4j-core:$log4jVersion"
 
@@ -64,34 +48,14 @@ dependencies {
     compile "com.google.dagger:dagger:$daggerVersion"
     annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
     apt "com.google.dagger:dagger-compiler:$daggerVersion"
-
-    // protobuf library
-    compile "com.google.protobuf:protobuf-java:$protobufVersion"
-
-    // Apache commons lang
-    compile "org.apache.commons:commons-lang3:$aclVersion"
 }
 
-task serverJar(type: Jar) {
+task fatJar(type: Jar) {
     group 'Standalone'
     description 'Creates a standalone jar file'
 
-    manifest.attributes 'Main-Class': 'com.local.server.Starter'
-    baseName = project.name + '-srv'
-    from {
-        configurations.compile.collect {
-            it.isDirectory() ? it : zipTree(it)
-        }
-    }
-    with jar
-}
-
-task clientJar(type: Jar) {
-    group 'Standalone'
-    description 'Creates a standalone jar file'
-
-    manifest.attributes 'Main-Class': 'com.local.client.Starter'
-    baseName = project.name + '-cli'
+    manifest.attributes 'Main-Class': 'com.local.Starter'
+    baseName = project.name + '-all'
     from {
         configurations.compile.collect {
             it.isDirectory() ? it : zipTree(it)
@@ -105,19 +69,4 @@ task run(type:JavaExec) {
     description 'Runs the java jar application (not standalone)'
     main = 'com.local.Starter'
     classpath = sourceSets.main.runtimeClasspath
-}
-
-sourceSets {
-    main {
-        proto {
-            // In addition to the default 'src/main/proto'
-            srcDir 'src/main/java/com/local/common/proto'
-            srcDir 'src/main/java/com/local/common'
-            // In addition to the default '**/*.proto' (use with caution).
-            // Using an extension other than 'proto' is NOT recommended,
-            // because when proto files are published along with class files, we can
-            // only tell the type of a file from its extension.
-            include '**/*.protodevel'
-        }
-    }
 }
