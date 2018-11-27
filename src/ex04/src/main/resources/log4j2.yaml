@@ -1,10 +1,5 @@
 Configuration:
   status: error
-  name: ex03
-  properties:
-    property:
-      name: filename
-      value: ex03-log.txt
 
   Appenders:
     Console:
@@ -14,7 +9,13 @@ Configuration:
         Pattern: "%highlight{%d{yyyy-MM-dd HH:mm:ss} %-5p %c - %m%n}{TRACE=Bright blue}"
 
   Loggers:
+    logger:
+      - name: com.local
+        level: all
+        additivity: false
+        AppenderRef:
+          ref: consoleAppender
     Root:
-      level: all
+      level: warn
       AppenderRef:
         - ref: consoleAppender
