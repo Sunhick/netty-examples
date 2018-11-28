@@ -53,3 +53,7 @@ fabric.properties
 
 # log files
 ex*-log.txt
+
+# certificates
+*.jks
+*.cer
