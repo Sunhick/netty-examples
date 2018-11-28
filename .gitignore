@@ -57,3 +57,4 @@ ex*-log.txt
 # certificates
 *.jks
 *.cer
+*.pem
