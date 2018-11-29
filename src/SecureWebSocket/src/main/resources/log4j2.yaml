@@ -1,0 +1,21 @@
+Configuration:
+  status: error
+
+  Appenders:
+    Console:
+      name: consoleAppender
+      target: SYSTEM_OUT
+      PatternLayout:
+        Pattern: "%highlight{%d{yyyy-MM-dd HH:mm:ss} %-5p %c - %m%n}{TRACE=Bright blue}"
+
+  Loggers:
+    logger:
+      - name: com.local
+        level: all
+        additivity: false
+        AppenderRef:
+          ref: consoleAppender
+    Root:
+      level: warn
+      AppenderRef:
+        - ref: consoleAppender
