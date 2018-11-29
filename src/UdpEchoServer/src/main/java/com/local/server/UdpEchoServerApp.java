@@ -1,7 +1,7 @@
-package com.local;
+package com.local.server;
 
-import com.local.dagger.DaggerUdpEchoServerComponent;
-import com.local.dagger.UdpEchoServerComponent;
+import com.local.server.dagger.DaggerUdpEchoServerComponent;
+import com.local.server.dagger.UdpEchoServerComponent;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2

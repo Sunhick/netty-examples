@@ -1,4 +1,4 @@
-package com.local;
+package com.local.server;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;

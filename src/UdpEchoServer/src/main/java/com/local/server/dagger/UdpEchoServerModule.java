@@ -1,19 +1,15 @@
-package com.local.dagger;
+package com.local.server.dagger;
 
-import com.local.UdpEchoServerChannelInitializer;
+import com.local.server.UdpEchoServerChannelInitializer;
 import dagger.Module;
 import dagger.Provides;
 import io.netty.bootstrap.Bootstrap;
-import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioDatagramChannel;
-import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.logging.LoggingHandler;
 import lombok.extern.log4j.Log4j2;
 
 import java.net.InetSocketAddress;
-import java.nio.channels.DatagramChannel;
 
 @Log4j2
 @Module

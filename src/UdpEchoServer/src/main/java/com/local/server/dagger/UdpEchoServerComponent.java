@@ -1,6 +1,6 @@
-package com.local.dagger;
+package com.local.server.dagger;
 
-import com.local.UdpEchoServer;
+import com.local.server.UdpEchoServer;
 import dagger.Component;
 
 @Component(modules = {UdpEchoServerModule.class})

@@ -1,4 +1,4 @@
-package com.local;
+package com.local.server;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.nio.NioDatagramChannel;

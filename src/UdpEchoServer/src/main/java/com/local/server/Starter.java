@@ -1,4 +1,4 @@
-package com.local;
+package com.local.server;
 
 import lombok.extern.log4j.Log4j2;
 
