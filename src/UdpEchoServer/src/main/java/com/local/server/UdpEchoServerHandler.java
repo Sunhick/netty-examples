@@ -13,5 +13,9 @@ public class UdpEchoServerHandler extends SimpleChannelInboundHandler<DatagramPa
         log.debug("UDP echo server handler. " + msg);
     }
 
-
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
+        log.error("Error : {}", cause);
+        ctx.close();
+    }
 }
